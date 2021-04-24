@@ -1,4 +1,4 @@
-from flask import Flask
+frfrom flask import Flask
 from helper import pets
 
 app = Flask(__name__)
@@ -31,5 +31,11 @@ def animals(pet_type):
 @app.route('/animals/<pet_type>/<int:pet_id>')
 def pet(pet_type, pet_id):
   pet = pets[pet_type][pet_id]
-  return '<h1>' + pet['name'] + '</h1>'
-  
+  return f'''
+  <h1> {pet['name']} </h1>
+  <img src='{pet['url']}' />
+  <p> {pet['description']} </p>
+  <ul>
+    <li>Breed: {pet['breed']}</li>
+    <li>Age: {pet['age']}</li>
+  </ul>'''
